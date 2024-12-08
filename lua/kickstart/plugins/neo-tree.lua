@@ -15,6 +15,11 @@ return {
   },
   opts = {
     filesystem = {
+      follow_current_file = true, -- Sync the tree with the currently open file
+      hijack_netrw_behavior = 'open_current', -- Use the current working directory
+      filtered_items = {
+        visible = true,
+      },
       window = {
         mappings = {
           ['\\'] = 'close_window',
