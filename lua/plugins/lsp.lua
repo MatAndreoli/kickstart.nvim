@@ -186,6 +186,7 @@ return {
         eslint = {},
         eslint_d = {},
         html = {},
+        cssls = {},
         jsonls = {},
         jsonlint = {},
         nginx_language_server = {},
