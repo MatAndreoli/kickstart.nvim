@@ -7,6 +7,10 @@ vim.g.python3_host_prog = '~/.venvs/nvim/bin/python3'
 
 vim.opt.autoread = true
 
+vim.opt.foldenable = true
+vim.opt.foldmethod = 'indent'
+vim.opt.foldlevelstart = 99
+
 -- Set <space> as the leader key
 -- See `:help mapleader`
 --  NOTE: Must happen before plugins are loaded (otherwise wrong leader will be used)
@@ -20,6 +24,8 @@ vim.g.have_nerd_font = true
 -- See `:help vim.opt`
 -- NOTE: You can change these options as you wish!
 --  For more options, you can see `:help option-list`
+
+vim.opt.linebreak = true
 
 -- Make line numbers default
 vim.opt.number = true
