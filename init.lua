@@ -45,6 +45,7 @@ require('lazy').setup({
   require 'plugins.autocompletion',
   require 'plugins.autoformat',
   require 'plugins.bufferline',
+  require 'plugins.fugitive',
   require 'plugins.gitsigns', -- adds gitsigns recommend keymaps
   require 'plugins.indent-blankline',
   require 'plugins.lsp',
