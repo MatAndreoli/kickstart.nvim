@@ -1,13 +1,35 @@
 return { -- Collection of various small independent plugins/modules
   'echasnovski/mini.nvim',
   config = function()
+    -- i - Inside
+    -- a - Arround
+    -- w - Word
+    -- a - Argument
+    -- p - paragraph
+    -- b - Brackets ({[]})
+    -- q - Quotes
+
     -- Better Around/Inside textobjects
     --
     -- Examples:
     --  - va)  - [V]isually select [A]round [)]paren
     --  - yinq - [Y]ank [I]nside [N]ext [Q]uote
     --  - ci'  - [C]hange [I]nside [']quote
+    --  - in/an - next
+    --  - il/al - last
+    --  - cina/cila - Arguments
     require('mini.ai').setup { n_lines = 500 }
+
+    -- Better text editting operators
+    --
+    -- Examples:
+    --  - gr            - Replace
+    --  - gm            - Multiply/duplicate
+    --  - gx            - Exchange
+    --  - g=            - Evaluate
+    --  - gs            - Sort
+    --  - gx + ina/ila  - Move arguments
+    require('mini.operators').setup()
 
     -- Add the closing pair to '|"|(|{|`
     require('mini.pairs').setup()
@@ -17,6 +39,7 @@ return { -- Collection of various small independent plugins/modules
     -- - saiw) - [S]urround [A]dd [I]nner [W]ord [)]Paren
     -- - sd'   - [S]urround [D]elete [']quotes
     -- - sr)'  - [S]urround [R]eplace [)] [']
+    -- - srff  - [S]urround [Replace] [F]unction
     require('mini.surround').setup()
 
     -- Simple and easy statusline.
