@@ -69,3 +69,6 @@ vim.keymap.set('n', '<leader>xs', ':close<CR>', { desc = 'Close current split wi
 vim.keymap.set('n', '<Tab>', ':bnext<CR>', { desc = 'Go to next buffer' })
 vim.keymap.set('n', '<S-Tab>', ':bprevious<CR>', { desc = 'Go to previous buffer' })
 vim.keymap.set('n', '<leader>x', ':Bdelete!<CR>', { desc = 'Close current buffer' })
+
+vim.keymap.set('n', '<M-j>', ':cnext<CR>')
+vim.keymap.set('n', '<M-k>', ':cprevious<CR>')
