@@ -66,6 +66,7 @@ require('lazy').setup({
   require 'plugins.treesitter',
   require 'plugins.ts-autotag',
   require 'plugins.which-key',
+  require 'plugins.auto-session',
 
   -- For additional information with loading, sourcing and examples see `:help lazy.nvim-🔌-plugin-spec`
   -- Or use telescope!

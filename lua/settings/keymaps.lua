@@ -5,6 +5,9 @@
 --  See `:help hlsearch`
 vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 
+vim.keymap.set('n', '<C-a>', ':qa!<CR>', { desc = 'Quit all (without savin "!")' })
+vim.keymap.set('n', '<C-x>', ':wqa<CR>', { desc = 'Quit all' })
+
 -- Diagnostic keymaps
 vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })
 
