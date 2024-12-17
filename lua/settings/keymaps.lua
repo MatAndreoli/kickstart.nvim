@@ -73,5 +73,5 @@ vim.keymap.set('n', '<Tab>', ':bnext<CR>', { desc = 'Go to next buffer' })
 vim.keymap.set('n', '<S-Tab>', ':bprevious<CR>', { desc = 'Go to previous buffer' })
 vim.keymap.set('n', '<leader>x', ':Bdelete!<CR>', { desc = 'Close current buffer' })
 
-vim.keymap.set('n', '<M-j>', ':cnext<CR>')
-vim.keymap.set('n', '<M-k>', ':cprevious<CR>')
+vim.keymap.set('n', '<C-M-j>', ':cnext<CR>')
+vim.keymap.set('n', '<C-M-k>', ':cprevious<CR>')
