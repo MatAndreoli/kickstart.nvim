@@ -75,12 +75,19 @@ local function create_bottom_terminal(opts)
   return { buf = buf, win = win }
 end
 
+local function start_insert_mode()
+  vim.schedule(function()
+    vim.cmd 'startinsert'
+  end)
+end
+
 local function toggle_terminal()
   if not vim.api.nvim_win_is_valid(state.floating.win) then
     state.floating = create_floating_window { buf = state.floating.buf }
     if vim.bo[state.floating.buf].buftype ~= 'terminal' then
       vim.cmd.terminal()
     end
+    start_insert_mode()
   else
     vim.api.nvim_win_hide(state.floating.win)
   end
@@ -92,6 +99,7 @@ local function toggle_bottom_terminal()
     if vim.bo[state.bottom.buf].buftype ~= 'terminal' then
       vim.cmd.terminal()
     end
+    start_insert_mode()
   else
     vim.api.nvim_win_hide(state.bottom.win)
   end
@@ -101,7 +109,7 @@ vim.api.nvim_create_user_command('Floaterminal', toggle_terminal, {})
 vim.api.nvim_create_user_command('BottomTerminal', toggle_bottom_terminal, {})
 
 -- Existing keybinding for floating terminal
-vim.keymap.set({ 'n', 't' }, '<space>tt', toggle_terminal, { desc = '[T]oggle [T]erminal' })
+vim.keymap.set({ 'n', 't' }, '<C-t>t', toggle_terminal, { desc = '[T]oggle [T]erminaL (floating)' })
 
 -- New keybinding for bottom terminal
-vim.keymap.set({ 'n', 't' }, '<space>bt', toggle_bottom_terminal, { desc = 'Toggle [B]ottom [T]erminal' })
+vim.keymap.set({ 'n', 't' }, '<C-t>b', toggle_bottom_terminal, { desc = '[T]oggle [B]ottom Terminal (floating)' })
