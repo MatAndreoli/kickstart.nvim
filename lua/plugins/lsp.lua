@@ -20,8 +20,37 @@ return {
     },
     dependencies = {
       -- Automatically install LSPs and related tools to stdpath for Neovim
-      { 'williamboman/mason.nvim', config = true }, -- NOTE: Must be loaded before dependants
-      'williamboman/mason-lspconfig.nvim',
+      {
+        'williamboman/mason.nvim', -- NOTE: Must be loaded before dependants
+        config = function()
+          -- setup mason with default properties
+          require('mason').setup {
+            ui = {
+              icons = {
+                package_installed = '✓',
+                package_pending = '➜',
+                package_uninstalled = '✗',
+              },
+              border = 'rounded',
+            },
+          }
+        end,
+      },
+      {
+        'williamboman/mason-lspconfig.nvim',
+        config = function()
+          -- ensure that we have lua language server, typescript launguage server, java language server, and java test language server are installed
+          require('mason-lspconfig').setup {
+            ensure_installed = { 'lua_ls', 'jdtls', 'cssls' },
+          }
+        end,
+      },
+      {
+        'ray-x/lsp_signature.nvim',
+        config = function()
+          require('lsp_signature').setup()
+        end,
+      },
       'WhoIsSethDaniel/mason-tool-installer.nvim',
 
       -- Useful status updates for LSP.
@@ -181,14 +210,15 @@ return {
       local servers = {
         clangd = {},
         cpptools = {},
+        cssls = {},
         docker_compose_language_service = {},
         dockerls = {},
         eslint = {},
         eslint_d = {},
         html = {},
-        cssls = {},
-        jsonls = {},
+        jdtls = {},
         jsonlint = {},
+        jsonls = {},
         nginx_language_server = {},
         pylint = {},
         pylsp = {},

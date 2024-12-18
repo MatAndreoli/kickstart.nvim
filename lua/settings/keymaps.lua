@@ -75,3 +75,5 @@ vim.keymap.set('n', '<leader>x', ':Bdelete!<CR>', { desc = 'Close current buffer
 
 vim.keymap.set('n', '<C-M-j>', ':cnext<CR>')
 vim.keymap.set('n', '<C-M-k>', ':cprevious<CR>')
+
+vim.keymap.set('n', '<leader>ch', vim.lsp.buf.hover, { desc = '[C]ode [H]over Documentation' })
