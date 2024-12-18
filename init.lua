@@ -48,26 +48,7 @@ vim.opt.rtp:prepend(lazypath)
 -- NOTE: Here is where you install your plugins.
 require('lazy').setup({
   require 'plugins.themes.tokyonight',
-
-  require 'plugins.alpha',
-  require 'plugins.autocompletion',
-  require 'plugins.autoformat',
-  require 'plugins.bufferline',
-  require 'plugins.fugitive',
-  require 'plugins.gitsigns', -- adds gitsigns recommend keymaps
-  require 'plugins.indent-blankline',
-  require 'plugins.lsp',
-  require 'plugins.lualine',
-  require 'plugins.mini',
-  require 'plugins.misc',
-  require 'plugins.neo-tree',
-  require 'plugins.telescope',
-  require 'plugins.todo-comments',
-  require 'plugins.treesitter',
-  require 'plugins.ts-autotag',
-  require 'plugins.which-key',
-  require 'plugins.auto-session',
-  require 'plugins.jdtls',
+  { import = 'plugins' },
 
   -- For additional information with loading, sourcing and examples see `:help lazy.nvim-🔌-plugin-spec`
   -- Or use telescope!
