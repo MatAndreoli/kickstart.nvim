@@ -67,6 +67,7 @@ require('lazy').setup({
   require 'plugins.ts-autotag',
   require 'plugins.which-key',
   require 'plugins.auto-session',
+  require 'plugins.jdtls',
 
   -- For additional information with loading, sourcing and examples see `:help lazy.nvim-🔌-plugin-spec`
   -- Or use telescope!
