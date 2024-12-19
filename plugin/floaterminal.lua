@@ -81,8 +81,22 @@ local function start_insert_mode()
   end)
 end
 
+local function focus_terminal_window(win_id)
+  vim.api.nvim_set_current_win(win_id)
+  start_insert_mode()
+end
+
 local function toggle_terminal()
-  if not vim.api.nvim_win_is_valid(state.floating.win) then
+  local is_floating_win_valid = vim.api.nvim_win_is_valid(state.floating.win)
+
+  -- If window exists but is not focused, focus it
+  if is_floating_win_valid and vim.api.nvim_get_current_win() ~= state.floating.win then
+    focus_terminal_window(state.floating.win)
+    return
+  end
+
+  -- If window doesn't exist, create it
+  if not is_floating_win_valid then
     state.floating = create_floating_window { buf = state.floating.buf }
     if vim.bo[state.floating.buf].buftype ~= 'terminal' then
       vim.cmd.terminal()
@@ -94,7 +108,16 @@ local function toggle_terminal()
 end
 
 local function toggle_bottom_terminal()
-  if not vim.api.nvim_win_is_valid(state.bottom.win) then
+  local is_botton_win_valid = vim.api.nvim_win_is_valid(state.bottom.win)
+
+  -- If window exists but is not focused, focus it
+  if is_botton_win_valid and vim.api.nvim_get_current_win() ~= state.bottom.win then
+    focus_terminal_window(state.bottom.win)
+    return
+  end
+
+  -- If window doesn't exist, create it
+  if not is_botton_win_valid then
     state.bottom = create_bottom_terminal { buf = state.bottom.buf }
     if vim.bo[state.bottom.buf].buftype ~= 'terminal' then
       vim.cmd.terminal()
@@ -108,8 +131,5 @@ end
 vim.api.nvim_create_user_command('Floaterminal', toggle_terminal, {})
 vim.api.nvim_create_user_command('BottomTerminal', toggle_bottom_terminal, {})
 
--- Existing keybinding for floating terminal
 vim.keymap.set({ 'n', 't' }, '<C-t>t', toggle_terminal, { desc = '[T]oggle [T]erminaL (floating)' })
-
--- New keybinding for bottom terminal
 vim.keymap.set({ 'n', 't' }, '<C-t>b', toggle_bottom_terminal, { desc = '[T]oggle [B]ottom Terminal (floating)' })
