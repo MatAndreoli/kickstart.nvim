@@ -1,11 +1,13 @@
 return {
   'stevearc/oil.nvim',
   opts = {
+    watch_for_changes = true,
     keymaps = {
       ['<C-s>'] = false,
       ['<C-h>'] = false,
       ['<C-t>'] = false,
       ['<C-l>'] = false,
+      ['<S-l>'] = 'actions.refresh',
     },
     view_options = {
       show_hidden = true,
