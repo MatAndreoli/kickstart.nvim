@@ -43,12 +43,10 @@ end, { desc = 'Open [T]erminal at the bottom' })
 
 vim.keymap.set('t', '<C-t>', '<C-\\><C-n>:q<CR>', { desc = 'Close terminal split' })
 
-vim.keymap.set('n', '<C-C><C-l>', '0D', { desc = '[C]lear [L]ine' })
-
 vim.keymap.set('v', '>', '>gv', { desc = 'Indent and keep selection' })
 vim.keymap.set('v', '<', '<gv', { desc = 'Unindent and keep selection' })
 
-vim.keymap.set('n', '<C-s>', '<cmd> w <CR>', { desc = '[S]ave current buffer' })
+vim.keymap.set('n', '<C-s>', ':w<CR>', { desc = '[S]ave current buffer' })
 
 vim.keymap.set('n', 'n', 'nzt')
 
